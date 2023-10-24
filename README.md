@@ -4,6 +4,8 @@ Team Project for IS201 - Fundamentals of Computing
 Chris Afarain
 Xavier Backus
 
+##Git hub directory: https://github.com/jbackus1/IS201-Backus-Afarian-Team-Project.git
+
 Project Description: Each team of 2-3 students is required to write a Tic-Tac-Toe (3x3) program implemented in Python as a team. There are multiple intermediate submissions based on their progress (please see the details of each submission below). During the game, a user will interact with a computer to play the game. Once a user chooses to play first or second and the label (X or O), then the game begins. As the game progresses, the computer can choose its placement in an empty spot in a random way or using a certain algorithm (e.g. rule-based or minimax algorithm) for an extra point. Your program then displays the board with one of three labels (O, X or predefined position number, and no blank cell please). In each turn, a user knows the available spots to place his/her mark. While the game is being played, your program should monitor the status of the game so that you either proceed for the next turn or to end if there is a winner or draw with appropriate message. 
 
 Project Requirements:
