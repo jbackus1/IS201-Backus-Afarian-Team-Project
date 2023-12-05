@@ -94,7 +94,7 @@ def validate_move(user_move, board):
     return 0 <= row < 3 and 0 <= col < 3 and board[row][col] == ' '
 
 def save_moves_to_file(moves):
-    with open("moves.txt", "a") as file:
+    with open("tictactoe.txt", "a") as file:
         for move in moves:
             file.write(f"{move[0]},{move[1]}\n")
 
