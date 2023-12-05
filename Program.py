@@ -65,10 +65,11 @@ def get_computer_move(board):
         return None  # No available moves
 
 # Update the board with the player's move
-def update_board(move, marker, board):
+def update_board(move, marker, board, moves):
     row, col = move
     board[row][col] = marker
-
+    moves.append(move)
+    
 # Check if there is a winner
 def check_winner(board, marker):
     # Check rows, columns, and diagonals for a win
@@ -92,9 +93,15 @@ def validate_move(user_move, board):
     row, col = user_move
     return 0 <= row < 3 and 0 <= col < 3 and board[row][col] == ' '
 
+def save_moves_to_file(moves):
+    with open("moves.txt", "a") as file:
+        for move in moves:
+            file.write(f"{move[0]},{move[1]}\n")
+
 # Main game loop
 current_player, game_is_over, winner = initialize_game_state()
 user_marker, computer_marker = assign_markers(current_player)
+moves = []
 
 while not game_is_over:
     # Display the board
@@ -105,10 +112,10 @@ while not game_is_over:
         while not validate_move(user_move, board):
             print("Invalid move. Try again.")
             user_move = get_user_move()
-        update_board(user_move, user_marker, board)
+        update_board(user_move, user_marker, board, moves)
     else:
         computer_move = get_computer_move(board)
-        update_board(computer_move, computer_marker, board)
+        update_board(computer_move, computer_marker, board, moves)
 
     # Check if there is a winner
     if check_winner(board, user_marker):
@@ -124,4 +131,5 @@ while not game_is_over:
         # Switch players for the next turn
         current_player = "user" if current_player == "computer" else "computer"
 
-# End of the game loop
+# Save moves to a file after the game ends
+save_moves_to_file(moves)
